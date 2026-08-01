@@ -151,6 +151,13 @@
   .exit-list { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
   .exit-row { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid #1c1c1c; }
   .exit-row:last-child { border-bottom: none; }
+  a.jsl { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a.jsl:hover { border-bottom-color: var(--accent); }
+  .radar-box { width: 100%; height: 150px; margin-top: 10px; }
+  .radar-flex { display: flex; gap: 16px; align-items: stretch; }
+  .radar-flex .dims { flex: 1; min-width: 0; }
+  .radar-flex .radar-box { flex: 0 0 220px; height: 150px; margin-top: 0; }
+  @media (max-width: 640px) { .radar-flex { flex-direction: column; } .radar-flex .radar-box { flex: none; width: 100%; } }
   footer {
     margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
     color: var(--muted); font-size: 11px; font-family: 'Geist Mono', monospace;
@@ -175,14 +182,14 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link active' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">306 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:12</span>
+    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:21</span>
   </div>
 </nav>
 <div class="wrap">
   
 <div class="statusbar">
-  <span>更新 <b>2026-08-01 19:12</b></span>
-  <span>行情 <b>306</b> 只</span>
+  <span>更新 <b>2026-08-01 19:21</b></span>
+  <span>行情 <b>300</b> 只</span>
   <span>全量池 <b>316</b> 只</span>
   <span>强赎预警 <b>55</b> / 319</span>
   <span class="dot">·</span>
@@ -197,63 +204,107 @@
 <div class="verdict-row">
   <span class='badge watch'>观察</span>
   <div class="v-main">
-    <span class="v-name">温氏转债</span>
-    <span class="v-code">123107</span>
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>温氏转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>123107</a></span>
     <span class="v-strat">潜伏下修</span>
     <span class="v-reason">动机+2 空间+1 但保底-2 -> 等价格回落</span>
+    <div class="radar-box" id="radar_123107_0"></div>
   </div>
   <span class="v-meta">114.7 · 溢价 31.0% · AAA · 剩 0.7 年</span>
 </div>
 <div class="verdict-row">
   <span class='badge skip'>不投</span>
   <div class="v-main">
-    <span class="v-name">长汽转债</span>
-    <span class="v-code">113049</span>
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>长汽转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>113049</a></span>
     <span class="v-strat">潜伏下修</span>
     <span class="v-reason">动机-1 空间2 保底-1 -> 条件不满足</span>
+    <div class="radar-box" id="radar_113049_1"></div>
   </div>
   <span class="v-meta">110.4 · 溢价 155.1% · AAA · 剩 0.9 年</span>
 </div>
 <div class="verdict-row">
   <span class='badge invest'>投</span>
   <div class="v-main">
-    <span class="v-name">江农转债</span>
-    <span class="v-code">110102</span>
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></span>
     <span class="v-strat">低价埋伏</span>
     <span class="v-reason">溢价+2 债底+2 质量+2 -> 三条件满足</span>
+    <div class="radar-box" id="radar_110102_2"></div>
   </div>
   <span class="v-meta">100.0 · 溢价 -2.4% · AA+ · 剩 6.0 年</span>
 </div>
 <div class="verdict-row">
   <span class='badge invest'>投</span>
   <div class="v-main">
-    <span class="v-name">三鑫转债</span>
-    <span class="v-code">123280</span>
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>三鑫转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>123280</a></span>
     <span class="v-strat">低价埋伏</span>
     <span class="v-reason">溢价+2 债底+2 质量+2 -> 三条件满足</span>
+    <div class="radar-box" id="radar_123280_3"></div>
   </div>
   <span class="v-meta">100.0 · 溢价 -0.2% · AA- · 剩 6.0 年</span>
 </div>
 <div class="verdict-row">
   <span class='badge invest'>投</span>
   <div class="v-main">
-    <span class="v-name">江农转债</span>
-    <span class="v-code">110102</span>
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></span>
     <span class="v-strat">次新债折价收敛</span>
     <span class="v-reason">折价+1 窗口+1 债底+2 质量+2 -> 四条件满足</span>
+    <div class="radar-box" id="radar_110102_4"></div>
   </div>
   <span class="v-meta">100.0 · 溢价 -2.4% · AA+ · 剩 6.0 年</span>
 </div>
 <div class="verdict-row">
   <span class='badge invest'>投</span>
   <div class="v-main">
-    <span class="v-name">奥普转债</span>
-    <span class="v-code">118075</span>
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>奥普转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>118075</a></span>
     <span class="v-strat">回售博弈</span>
     <span class="v-reason">压力+2 动机+1 债底2 -> 三条件满足</span>
+    <div class="radar-box" id="radar_118075_5"></div>
   </div>
   <span class="v-meta">100.0 · 溢价 44.4% · AA · 剩 6.0 年</span>
 </div></div>
+  
+<script>
+(function() {
+  if (typeof echarts === 'undefined') return;
+  var specs = [{id:'radar_123107_0',name:'radar_123107_0',value:[100,0,75],color:'#f78166',indicators:[{name:'动机',max:100},{name:'保底',max:100},{name:'空间',max:100}]},
+{id:'radar_113049_1',name:'radar_113049_1',value:[25,25,100],color:'#f85149',indicators:[{name:'动机',max:100},{name:'保底',max:100},{name:'空间',max:100}]},
+{id:'radar_110102_2',name:'radar_110102_2',value:[100,100,100],color:'#3fb950',indicators:[{name:'溢价底',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
+{id:'radar_123280_3',name:'radar_123280_3',value:[100,100,100],color:'#3fb950',indicators:[{name:'溢价底',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
+{id:'radar_110102_4',name:'radar_110102_4',value:[75,75,100,100],color:'#3fb950',indicators:[{name:'折价',max:100},{name:'窗口',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
+{id:'radar_118075_5',name:'radar_118075_5',value:[100,75,100],color:'#3fb950',indicators:[{name:'回售压力',max:100},{name:'动机',max:100},{name:'债底',max:100}]}];
+  specs.forEach(function(s) {
+    var el = document.getElementById(s.id);
+    if (!el) return;
+    var ch = echarts.init(el);
+    ch.setOption({
+      tooltip: {trigger:'item'},
+      radar: {
+        indicator: s.indicators,
+        radius: '62%',
+        splitNumber: 4,
+        axisName: {color: '#8b8b8b', fontSize: 11},
+        splitLine: {lineStyle: {color: '#1f1f1f'}},
+        splitArea: {areaStyle: {color: ['transparent','transparent']}},
+        axisLine: {lineStyle: {color: '#1f1f1f'}}
+      },
+      series: [{
+        type: 'radar',
+        symbolSize: 3,
+        data: [{value: s.value, name: s.name,
+          lineStyle: {color: s.color, width: 1.5},
+          itemStyle: {color: s.color},
+          areaStyle: {color: s.color, opacity: 0.12}}]
+      }]
+    });
+    window.addEventListener('resize', function() { ch.resize(); });
+  });
+})();
+</script>
 </section>
   
 <section class="section">
@@ -265,7 +316,7 @@
   
 <div class="table-wrap"><table>
   <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
-  <tbody><tr><td class='bond'>长汽转债</td><td class='code'>113049</td><td class='num'>110.4</td><td class='num'>43.3</td><td class='num'>155.1</td><td>AAA</td><td class='num'>0.9</td><td class='num'>35.0</td></tr><tr><td class='bond'>温氏转债</td><td class='code'>123107</td><td class='num'>114.7</td><td class='num'>87.6</td><td class='num'>31.0</td><td>AAA</td><td class='num'>0.7</td><td class='num'>77.1</td></tr></tbody>
+  <tbody><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>长汽转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>113049</a></td><td class='num'>110.4</td><td class='num'>43.3</td><td class='num'>155.1</td><td>AAA</td><td class='num'>0.9</td><td class='num'>35.0</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>温氏转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>123107</a></td><td class='num'>114.7</td><td class='num'>87.6</td><td class='num'>31.0</td><td>AAA</td><td class='num'>0.7</td><td class='num'>77.1</td></tr></tbody>
 </table></div>
 </section>
 <section class="section">
@@ -277,7 +328,7 @@
   
 <div class="table-wrap"><table>
   <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
-  <tbody><tr><td class='bond'>三鑫转债</td><td class='code'>123280</td><td class='num'>100.0</td><td class='num'>100.2</td><td class='num'>-0.2</td><td>AA-</td><td class='num'>6.0</td><td class='num'>5.3</td></tr><tr><td class='bond'>江农转债</td><td class='code'>110102</td><td class='num'>100.0</td><td class='num'>102.4</td><td class='num'>-2.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>11.8</td></tr></tbody>
+  <tbody><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>三鑫转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>123280</a></td><td class='num'>100.0</td><td class='num'>100.2</td><td class='num'>-0.2</td><td>AA-</td><td class='num'>6.0</td><td class='num'>5.3</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></td><td class='num'>100.0</td><td class='num'>102.4</td><td class='num'>-2.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>11.8</td></tr></tbody>
 </table></div>
 </section>
 <section class="section">
@@ -289,7 +340,7 @@
   
 <div class="table-wrap"><table>
   <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
-  <tbody><tr><td class='bond'>江农转债</td><td class='code'>110102</td><td class='num'>100.0</td><td class='num'>102.4</td><td class='num'>-2.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>11.8</td></tr></tbody>
+  <tbody><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></td><td class='num'>100.0</td><td class='num'>102.4</td><td class='num'>-2.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>11.8</td></tr></tbody>
 </table></div>
 </section>
 <section class="section">
@@ -301,7 +352,7 @@
   
 <div class="table-wrap"><table>
   <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
-  <tbody><tr><td class='bond'>奥普转债</td><td class='code'>118075</td><td class='num'>100.0</td><td class='num'>69.2</td><td class='num'>44.4</td><td>AA</td><td class='num'>6.0</td><td class='num'>12.7</td></tr></tbody>
+  <tbody><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>奥普转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>118075</a></td><td class='num'>100.0</td><td class='num'>69.2</td><td class='num'>44.4</td><td>AA</td><td class='num'>6.0</td><td class='num'>12.7</td></tr></tbody>
 </table></div>
 </section>
   
@@ -331,7 +382,7 @@
   
 <div class="table-wrap"><table>
   <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>双低</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
-  <tbody><tr><td class='bond'>江农转债</td><td class='code'>110102</td><td class='num'>100.0</td><td class='num'>97.6</td><td class='num'>-2.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>11.8</td></tr><tr><td class='bond'>三鑫转债</td><td class='code'>123280</td><td class='num'>100.0</td><td class='num'>99.8</td><td class='num'>-0.2</td><td>AA-</td><td class='num'>6.0</td><td class='num'>5.3</td></tr><tr><td class='bond'>特宝转债</td><td class='code'>118074</td><td class='num'>100.0</td><td class='num'>100.4</td><td class='num'>0.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>15.3</td></tr><tr><td class='bond'>申能转债</td><td class='code'>110103</td><td class='num'>100.0</td><td class='num'>102.2</td><td class='num'>2.2</td><td>AAA</td><td class='num'>6.0</td><td class='num'>20.0</td></tr><tr><td class='bond'>合金转债</td><td class='code'>123278</td><td class='num'>100.0</td><td class='num'>106.8</td><td class='num'>6.8</td><td>AA-</td><td class='num'>6.0</td><td class='num'>5.5</td></tr><tr><td class='bond'>玉禾转债</td><td class='code'>123277</td><td class='num'>100.0</td><td class='num'>107.1</td><td class='num'>7.1</td><td>AA</td><td class='num'>6.0</td><td class='num'>15.0</td></tr><tr><td class='bond'>密卫转债</td><td class='code'>113658</td><td class='num'>108.0</td><td class='num'>109.0</td><td class='num'>0.9</td><td>AA-</td><td class='num'>-</td><td class='num'>4.1</td></tr><tr><td class='bond'>炬申转债</td><td class='code'>127115</td><td class='num'>100.0</td><td class='num'>111.5</td><td class='num'>11.5</td><td>AA-</td><td class='num'>6.0</td><td class='num'>3.8</td></tr><tr><td class='bond'>天脉转债</td><td class='code'>123279</td><td class='num'>100.0</td><td class='num'>118.8</td><td class='num'>18.8</td><td>AA</td><td class='num'>6.0</td><td class='num'>7.9</td></tr><tr><td class='bond'>赛斯转债</td><td class='code'>118073</td><td class='num'>100.0</td><td class='num'>122.2</td><td class='num'>22.2</td><td>AA</td><td class='num'>6.0</td><td class='num'>5.5</td></tr><tr><td class='bond'>上银转债</td><td class='code'>113042</td><td class='num'>119.1</td><td class='num'>124.2</td><td class='num'>5.2</td><td>AAA</td><td class='num'>0.5</td><td class='num'>199.8</td></tr><tr><td class='bond'>大参转债</td><td class='code'>113605</td><td class='num'>119.4</td><td class='num'>126.3</td><td class='num'>6.8</td><td>AA</td><td class='num'>0.2</td><td class='num'>14.0</td></tr><tr><td class='bond'>齐翔转2</td><td class='code'>128128</td><td class='num'>110.1</td><td class='num'>127.0</td><td class='num'>16.9</td><td>AA</td><td class='num'>0.1</td><td class='num'>6.8</td></tr><tr><td class='bond'>鸿路转债</td><td class='code'>128134</td><td class='num'>123.0</td><td class='num'>128.4</td><td class='num'>5.4</td><td>AA</td><td class='num'>0.2</td><td class='num'>15.7</td></tr><tr><td class='bond'>振26转债</td><td class='code'>113709</td><td class='num'>100.0</td><td class='num'>129.5</td><td class='num'>29.5</td><td>AA</td><td class='num'>6.0</td><td class='num'>8.8</td></tr><tr><td class='bond'>曙26转债</td><td class='code'>113708</td><td class='num'>100.0</td><td class='num'>130.5</td><td class='num'>30.5</td><td>AAA</td><td class='num'>6.0</td><td class='num'>80.0</td></tr><tr><td class='bond'>南航转债</td><td class='code'>110075</td><td class='num'>107.6</td><td class='num'>134.1</td><td class='num'>26.5</td><td>AAA</td><td class='num'>0.2</td><td class='num'>59.0</td></tr><tr><td class='bond'>新乳转债</td><td class='code'>128142</td><td class='num'>121.4</td><td class='num'>137.8</td><td class='num'>16.4</td><td>AA</td><td class='num'>0.4</td><td class='num'>7.2</td></tr><tr><td class='bond'>宝莱转债</td><td class='code'>123065</td><td class='num'>122.4</td><td class='num'>138.7</td><td class='num'>16.3</td><td>AA-</td><td class='num'>0.1</td><td class='num'>2.2</td></tr><tr><td class='bond'>青农转债</td><td class='code'>128129</td><td class='num'>107.9</td><td class='num'>140.0</td><td class='num'>32.1</td><td>AAA</td><td class='num'>0.1</td><td class='num'>50.0</td></tr></tbody>
+  <tbody><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></td><td class='num'>100.0</td><td class='num'>97.6</td><td class='num'>-2.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>11.8</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>三鑫转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>123280</a></td><td class='num'>100.0</td><td class='num'>99.8</td><td class='num'>-0.2</td><td>AA-</td><td class='num'>6.0</td><td class='num'>5.3</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118074' target='_blank' rel='noopener'>特宝转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118074' target='_blank' rel='noopener'>118074</a></td><td class='num'>100.0</td><td class='num'>100.4</td><td class='num'>0.4</td><td>AA+</td><td class='num'>6.0</td><td class='num'>15.3</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110103' target='_blank' rel='noopener'>申能转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110103' target='_blank' rel='noopener'>110103</a></td><td class='num'>100.0</td><td class='num'>102.2</td><td class='num'>2.2</td><td>AAA</td><td class='num'>6.0</td><td class='num'>20.0</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123278' target='_blank' rel='noopener'>合金转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123278' target='_blank' rel='noopener'>123278</a></td><td class='num'>100.0</td><td class='num'>106.8</td><td class='num'>6.8</td><td>AA-</td><td class='num'>6.0</td><td class='num'>5.5</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123277' target='_blank' rel='noopener'>玉禾转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123277' target='_blank' rel='noopener'>123277</a></td><td class='num'>100.0</td><td class='num'>107.1</td><td class='num'>7.1</td><td>AA</td><td class='num'>6.0</td><td class='num'>15.0</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113658' target='_blank' rel='noopener'>密卫转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113658' target='_blank' rel='noopener'>113658</a></td><td class='num'>108.0</td><td class='num'>109.0</td><td class='num'>0.9</td><td>AA-</td><td class='num'>-</td><td class='num'>4.1</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/127115' target='_blank' rel='noopener'>炬申转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/127115' target='_blank' rel='noopener'>127115</a></td><td class='num'>100.0</td><td class='num'>111.5</td><td class='num'>11.5</td><td>AA-</td><td class='num'>6.0</td><td class='num'>3.8</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123279' target='_blank' rel='noopener'>天脉转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123279' target='_blank' rel='noopener'>123279</a></td><td class='num'>100.0</td><td class='num'>118.8</td><td class='num'>18.8</td><td>AA</td><td class='num'>6.0</td><td class='num'>7.9</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118073' target='_blank' rel='noopener'>赛斯转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118073' target='_blank' rel='noopener'>118073</a></td><td class='num'>100.0</td><td class='num'>122.2</td><td class='num'>22.2</td><td>AA</td><td class='num'>6.0</td><td class='num'>5.5</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113042' target='_blank' rel='noopener'>上银转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113042' target='_blank' rel='noopener'>113042</a></td><td class='num'>119.1</td><td class='num'>124.2</td><td class='num'>5.2</td><td>AAA</td><td class='num'>0.5</td><td class='num'>199.8</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113605' target='_blank' rel='noopener'>大参转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113605' target='_blank' rel='noopener'>113605</a></td><td class='num'>119.4</td><td class='num'>126.3</td><td class='num'>6.8</td><td>AA</td><td class='num'>0.2</td><td class='num'>14.0</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128128' target='_blank' rel='noopener'>齐翔转2</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128128' target='_blank' rel='noopener'>128128</a></td><td class='num'>110.1</td><td class='num'>127.0</td><td class='num'>16.9</td><td>AA</td><td class='num'>0.1</td><td class='num'>6.8</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128134' target='_blank' rel='noopener'>鸿路转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128134' target='_blank' rel='noopener'>128134</a></td><td class='num'>123.0</td><td class='num'>128.4</td><td class='num'>5.4</td><td>AA</td><td class='num'>0.2</td><td class='num'>15.7</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113709' target='_blank' rel='noopener'>振26转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113709' target='_blank' rel='noopener'>113709</a></td><td class='num'>100.0</td><td class='num'>129.5</td><td class='num'>29.5</td><td>AA</td><td class='num'>6.0</td><td class='num'>8.8</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113708' target='_blank' rel='noopener'>曙26转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113708' target='_blank' rel='noopener'>113708</a></td><td class='num'>100.0</td><td class='num'>130.5</td><td class='num'>30.5</td><td>AAA</td><td class='num'>6.0</td><td class='num'>80.0</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110075' target='_blank' rel='noopener'>南航转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110075' target='_blank' rel='noopener'>110075</a></td><td class='num'>107.6</td><td class='num'>134.1</td><td class='num'>26.5</td><td>AAA</td><td class='num'>0.2</td><td class='num'>59.0</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128142' target='_blank' rel='noopener'>新乳转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128142' target='_blank' rel='noopener'>128142</a></td><td class='num'>121.4</td><td class='num'>137.8</td><td class='num'>16.4</td><td>AA</td><td class='num'>0.4</td><td class='num'>7.2</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123065' target='_blank' rel='noopener'>宝莱转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123065' target='_blank' rel='noopener'>123065</a></td><td class='num'>122.4</td><td class='num'>138.7</td><td class='num'>16.3</td><td>AA-</td><td class='num'>0.1</td><td class='num'>2.2</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128129' target='_blank' rel='noopener'>青农转债</a></td><td class='code'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128129' target='_blank' rel='noopener'>128129</a></td><td class='num'>107.9</td><td class='num'>140.0</td><td class='num'>32.1</td><td>AAA</td><td class='num'>0.1</td><td class='num'>50.0</td></tr></tbody>
 </table></div>
 </section>
   
@@ -340,7 +391,7 @@
   
 <div class="table-wrap"><table>
   <thead><tr><th>名称</th><th>现价</th><th>状态</th><th>最后交易日</th></tr></thead>
-  <tbody><tr><td class='bond'>密卫转债</td><td class='num'>108.0</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-06</td></tr><tr><td class='bond'>正帆转债</td><td class='num'>140.0</td><td style='color:#f85149'>公告要强赎</td><td>-</td></tr><tr><td class='bond'>齐翔转2</td><td class='num'>110.1</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-14</td></tr><tr><td class='bond'>文科转债</td><td class='num'>114.9</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-14</td></tr><tr><td class='bond'>嘉泽转债</td><td class='num'>163.5</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-18</td></tr><tr><td class='bond'>汇车退债</td><td class='num'>33.4</td><td style='color:#f85149'>已公告强赎</td><td>2026-07-31</td></tr><tr><td class='bond'>青农转债</td><td class='num'>107.9</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-19</td></tr><tr><td class='bond'>万孚转债</td><td class='num'>110.1</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-26</td></tr><tr><td class='bond'>宝莱转债</td><td class='num'>122.4</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-31</td></tr><tr><td class='bond'>超达转债</td><td class='num'>173.8</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'>晶科转债</td><td class='num'>122.3</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'>电化转债</td><td class='num'>174.6</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'>欧通转债</td><td class='num'>854.0</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'>帝欧转债</td><td class='num'>140.8</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'>煜邦转债</td><td class='num'>137.0</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr></tbody>
+  <tbody><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113658' target='_blank' rel='noopener'>密卫转债</a></td><td class='num'>108.0</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-06</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118053' target='_blank' rel='noopener'>正帆转债</a></td><td class='num'>140.0</td><td style='color:#f85149'>公告要强赎</td><td>-</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128128' target='_blank' rel='noopener'>齐翔转2</a></td><td class='num'>110.1</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-14</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128127' target='_blank' rel='noopener'>文科转债</a></td><td class='num'>114.9</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-14</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113039' target='_blank' rel='noopener'>嘉泽转债</a></td><td class='num'>163.5</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-18</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/404004' target='_blank' rel='noopener'>汇车退债</a></td><td class='num'>33.4</td><td style='color:#f85149'>已公告强赎</td><td>2026-07-31</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/128129' target='_blank' rel='noopener'>青农转债</a></td><td class='num'>107.9</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-19</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123064' target='_blank' rel='noopener'>万孚转债</a></td><td class='num'>110.1</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-26</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123065' target='_blank' rel='noopener'>宝莱转债</a></td><td class='num'>122.4</td><td style='color:#f85149'>已公告强赎</td><td>2026-08-31</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123187' target='_blank' rel='noopener'>超达转债</a></td><td class='num'>173.8</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113048' target='_blank' rel='noopener'>晶科转债</a></td><td class='num'>122.3</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/127109' target='_blank' rel='noopener'>电化转债</a></td><td class='num'>174.6</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123241' target='_blank' rel='noopener'>欧通转债</a></td><td class='num'>854.0</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/127047' target='_blank' rel='noopener'>帝欧转债</a></td><td class='num'>140.8</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr><tr><td class='bond'><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118039' target='_blank' rel='noopener'>煜邦转债</a></td><td class='num'>137.0</td><td style='color:#f85149'>公告不强赎</td><td>-</td></tr></tbody>
 </table></div>
 </section>
   
