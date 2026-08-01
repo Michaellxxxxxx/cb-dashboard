@@ -185,7 +185,7 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link active' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 21:05</span>
+    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 22:04</span>
   </div>
 </nav>
 <div class="wrap">
@@ -202,72 +202,10 @@
 </table></div>
   </section>
   <section class="section">
-    <div class="sec-head"><h2>深度分析</h2><span class="count">1</span></div>
-    <div class="grid2">
-<div class="dim-card">
-  <div class="dim-card-head">
-    <span class="dname"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>奥普转债</a></span>
-    <span class="code" style="font-size:12px;color:var(--muted);font-family:'Geist Mono',monospace"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>118075</a></span>
-    <span class='power' style='color:#3fb950'>+8.8/10</span>
-    <span class='badge invest'>投</span>
-  </div>
-  <div class="meta">100.0 · 转股价值 69.25 · 溢价 44.4% · AA · 剩 5.997 年 · 12.7 亿 · 到期 2.16%</div>
-  <div style="font-size:13px">压力+2 动机+1 债底2 -> 三条件满足</div>
-  <div class="radar-flex">
-    <div class="dims"><div class='dim-row'><span class='dim-name'>回售压力</span><span class='dim-score' style='color:#3fb950'>+10</span><span class='dim-note'>正股103.90 已跌破回售触发价105.02 (1%深)</span></div><div class='dim-row'><span class='dim-name'>公司动机</span><span class='dim-score' style='color:#3fb950'>+5</span><span class='dim-note'>净利1.86亿 < 转债余额12.7亿, 还钱有压力</span></div><div class='dim-row'><span class='dim-name'>债底</span><span class='dim-score' style='color:#3fb950'>+10</span><span class='dim-note'>到期收益 2.2%, 有真实债底</span></div></div>
-    <div class="radar-box" id="radar_118075_0"></div>
-  </div>
-  
-<table class="fin-table">
-  <thead><tr><th>年</th><th>营收亿</th><th>净利亿</th><th>每股净资产</th><th>ROE%</th></tr></thead>
-  <tbody><tr><td class='mono'>2023</td><td class='num'>9.44</td><td class='num'>1.94</td><td class='num'>23.55</td><td class='num'>6.89</td></tr><tr><td class='mono'>2024</td><td class='num'>9.11</td><td class='num'>1.36</td><td class='num'>23.86</td><td class='num'>4.69</td></tr><tr><td class='mono'>2025</td><td class='num'>12.69</td><td class='num'>1.86</td><td class='num'>25.04</td><td class='num'>6.22</td></tr></tbody>
-</table>
-</div></div>
+    <div class="sec-head"><h2>深度分析</h2><span class="count">0</span></div>
+    <div class="grid2"><div class="empty" style="color:var(--muted)">暂无深度分析</div></div>
   </section>
   
-<script>
-(function() {
-  if (typeof echarts === 'undefined') return;
-  var specs = [{id:'radar_118075_0',name:'奥普转债',value:[10,5,10],raw:[10,5,10],color:'#3fb950',indicators:[{name:'回售压力',max:10,min:-10},{name:'公司动机',max:10,min:-10},{name:'债底',max:10,min:-10}]}];
-  specs.forEach(function(s) {
-    var el = document.getElementById(s.id);
-    if (!el) return;
-    var ch = echarts.init(el);
-    ch.setOption({
-      tooltip: {
-        trigger: 'item',
-        formatter: function(p) {
-          var rows = s.indicators.map(function(ind, i) {
-            var v = s.raw[i];
-            var col = v > 0 ? '#3fb950' : (v < 0 ? '#f85149' : '#8b8b8b');
-            return ind.name + ' <b style="color:' + col + '">' + (v > 0 ? '+' : '') + v + '</b>';
-          });
-          return '<b>' + s.name + '</b><br/>' + rows.join('<br/>');
-        }
-      },
-      radar: {
-        indicator: s.indicators,
-        radius: '62%',
-        splitNumber: 4,
-        axisName: {color: '#8b8b8b', fontSize: 11},
-        splitLine: {lineStyle: {color: '#1f1f1f'}},
-        splitArea: {areaStyle: {color: ['transparent','transparent']}},
-        axisLine: {lineStyle: {color: '#1f1f1f'}},
-        axisLabel: {show: false}
-      },
-      series: [{
-        type: 'radar',
-        symbolSize: 3,
-        data: [{value: s.value, name: s.name,
-          lineStyle: {color: s.color, width: 1.5},
-          itemStyle: {color: s.color},
-          areaStyle: {color: s.color, opacity: 0.12}}]
-      }]
-    });
-    window.addEventListener('resize', function() { ch.resize(); });
-  });
-})();
-</script>
   
 <section class="section">
   <div class="sec-head"><h2>退出纪律</h2><span class="count">5 条</span></div>
