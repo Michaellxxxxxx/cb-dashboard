@@ -185,7 +185,7 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link active' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:39</span>
+    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:47</span>
   </div>
 </nav>
 <div class="wrap">
@@ -208,13 +208,13 @@
   <div class="dim-card-head">
     <span class="dname"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></span>
     <span class="code" style="font-size:12px;color:var(--muted);font-family:'Geist Mono',monospace"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></span>
-    <span class='power' style='color:#3fb950'>70%</span>
+    <span class='power' style='color:#3fb950'>+7.0/10</span>
     <span class='badge invest'>投</span>
   </div>
   <div class="meta">100.0 · 转股价值 102.42 · 溢价 -2.37% · AA+ · 剩 5.956 年 · 11.85 亿 · 到期 2.04%</div>
   <div style="font-size:13px">折价+1 窗口+1 债底+2 质量+2 -> 四条件满足</div>
   <div class="radar-flex">
-    <div class="dims"><div class='dim-row'><span class='dim-name'>折价深度</span><span class='dim-score' style='color:#3fb950'>+1</span><span class='dim-note'>溢价-2.4%, 折价明显</span></div><div class='dim-row'><span class='dim-name'>距转股期</span><span class='dim-score' style='color:#3fb950'>+1</span><span class='dim-note'>距转股期172天, 窗口适中</span></div><div class='dim-row'><span class='dim-name'>债底</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>到期收益 2.0%, 有真实债底</span></div><div class='dim-row'><span class='dim-name'>正股质量</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>近3年持续盈利; 最新净利5.33亿</span></div></div>
+    <div class="dims"><div class='dim-row'><span class='dim-name'>折价深度</span><span class='dim-score' style='color:#3fb950'>+5</span><span class='dim-note'>溢价-2.4%, 折价明显</span></div><div class='dim-row'><span class='dim-name'>距转股期</span><span class='dim-score' style='color:#3fb950'>+5</span><span class='dim-note'>距转股期172天, 窗口适中</span></div><div class='dim-row'><span class='dim-name'>债底</span><span class='dim-score' style='color:#3fb950'>+10</span><span class='dim-note'>到期收益 2.0%, 有真实债底</span></div><div class='dim-row'><span class='dim-name'>正股质量</span><span class='dim-score' style='color:#3fb950'>+10</span><span class='dim-note'>近3年持续盈利; 最新净利5.33亿</span></div></div>
     <div class="radar-box" id="radar_110102_0"></div>
   </div>
   
@@ -228,7 +228,7 @@
 <script>
 (function() {
   if (typeof echarts === 'undefined') return;
-  var specs = [{id:'radar_110102_0',name:'江农转债',value:[1,1,2,2],raw:[1,1,2,2],color:'#3fb950',indicators:[{name:'折价深度',max:2,min:-2},{name:'距转股期',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'正股质量',max:2,min:-2}]}];
+  var specs = [{id:'radar_110102_0',name:'江农转债',value:[5,5,10,10],raw:[5,5,10,10],color:'#3fb950',indicators:[{name:'折价深度',max:10,min:-10},{name:'距转股期',max:10,min:-10},{name:'债底',max:10,min:-10},{name:'正股质量',max:10,min:-10}]}];
   specs.forEach(function(s) {
     var el = document.getElementById(s.id);
     if (!el) return;
@@ -276,6 +276,7 @@
   <footer>
     <span>静态快照, 非实时</span>
     <span>判定规则: 三条件 AND, 任一失败即不投</span>
+    <span>得分域: 维度 ±10 · 战力 /10</span>
     <span>数据: 新浪 + 集思录</span>
   </footer>
 </div>

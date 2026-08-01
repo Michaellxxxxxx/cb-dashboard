@@ -185,7 +185,7 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link active' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:39</span>
+    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:47</span>
   </div>
 </nav>
 <div class="wrap">
@@ -208,13 +208,13 @@
   <div class="dim-card-head">
     <span class="dname"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>奥普转债</a></span>
     <span class="code" style="font-size:12px;color:var(--muted);font-family:'Geist Mono',monospace"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>118075</a></span>
-    <span class='power' style='color:#3fb950'>88%</span>
+    <span class='power' style='color:#3fb950'>+8.8/10</span>
     <span class='badge invest'>投</span>
   </div>
   <div class="meta">100.0 · 转股价值 69.25 · 溢价 44.4% · AA · 剩 5.997 年 · 12.7 亿 · 到期 2.16%</div>
   <div style="font-size:13px">压力+2 动机+1 债底2 -> 三条件满足</div>
   <div class="radar-flex">
-    <div class="dims"><div class='dim-row'><span class='dim-name'>回售压力</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>正股103.90 已跌破回售触发价105.02 (1%深)</span></div><div class='dim-row'><span class='dim-name'>公司动机</span><span class='dim-score' style='color:#3fb950'>+1</span><span class='dim-note'>净利1.86亿 < 转债余额12.7亿, 还钱有压力</span></div><div class='dim-row'><span class='dim-name'>债底</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>到期收益 2.2%, 有真实债底</span></div></div>
+    <div class="dims"><div class='dim-row'><span class='dim-name'>回售压力</span><span class='dim-score' style='color:#3fb950'>+10</span><span class='dim-note'>正股103.90 已跌破回售触发价105.02 (1%深)</span></div><div class='dim-row'><span class='dim-name'>公司动机</span><span class='dim-score' style='color:#3fb950'>+5</span><span class='dim-note'>净利1.86亿 < 转债余额12.7亿, 还钱有压力</span></div><div class='dim-row'><span class='dim-name'>债底</span><span class='dim-score' style='color:#3fb950'>+10</span><span class='dim-note'>到期收益 2.2%, 有真实债底</span></div></div>
     <div class="radar-box" id="radar_118075_0"></div>
   </div>
   
@@ -228,7 +228,7 @@
 <script>
 (function() {
   if (typeof echarts === 'undefined') return;
-  var specs = [{id:'radar_118075_0',name:'奥普转债',value:[2,1,2],raw:[2,1,2],color:'#3fb950',indicators:[{name:'回售压力',max:2,min:-2},{name:'公司动机',max:2,min:-2},{name:'债底',max:2,min:-2}]}];
+  var specs = [{id:'radar_118075_0',name:'奥普转债',value:[10,5,10],raw:[10,5,10],color:'#3fb950',indicators:[{name:'回售压力',max:10,min:-10},{name:'公司动机',max:10,min:-10},{name:'债底',max:10,min:-10}]}];
   specs.forEach(function(s) {
     var el = document.getElementById(s.id);
     if (!el) return;
@@ -276,6 +276,7 @@
   <footer>
     <span>静态快照, 非实时</span>
     <span>判定规则: 三条件 AND, 任一失败即不投</span>
+    <span>得分域: 维度 ±10 · 战力 /10</span>
     <span>数据: 新浪 + 集思录</span>
   </footer>
 </div>
