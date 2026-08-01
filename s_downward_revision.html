@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>潜伏下修 · 可转债监控</title>
+<style>
+  :root { --bg: #0d1117; --panel: #161b22; --line: #21262d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #f78166;
+    --green: #3fb950; --red: #f85149; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  .mono { font-family: "SF Mono", Consolas, "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px 16px 64px; }
+  header.top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    padding: 8px 0 20px; border-bottom: 1px solid var(--line); }
+  header.top h1 { font-size: 20px; font-weight: 650; }
+  .nav { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nav-link { color: var(--muted); text-decoration: none; font-size: 13px;
+    padding: 4px 12px; border: 1px solid var(--line); border-radius: 20px; }
+  .nav-link:hover { border-color: var(--accent); color: var(--text); }
+  .nav-link.active { background: var(--accent); color: #0d1117; border-color: var(--accent); font-weight: 600; }
+  .block { margin-top: 28px; }
+  .block h2 { font-size: 16px; font-weight: 650; margin-bottom: 10px; }
+  .rule { color: var(--muted); font-size: 12px; margin: -4px 0 12px; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 11px; color: var(--muted); font-weight: 500;
+    padding: 8px 12px; border-bottom: 1px solid var(--line); background: #10151c; }
+  td { padding: 8px 12px; border-bottom: 1px solid #1c2128; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.bond { font-weight: 550; }
+  td.code { color: var(--muted); font-size: 12px; }
+  .deep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .bond-name { font-size: 16px; font-weight: 700; }
+  .verdict { margin-left: auto; font-size: 12px; font-weight: 700; color: #fff;
+    border-radius: 6px; padding: 3px 10px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--muted);
+    font-size: 12px; padding-bottom: 10px; border-bottom: 1px solid #1c2128; margin-bottom: 10px; }
+  .reason { font-size: 13px; margin-bottom: 12px; }
+  .dims { display: flex; flex-direction: column; gap: 6px; }
+  .dim-row { display: grid; grid-template-columns: 44px 32px 1fr; gap: 8px; font-size: 12px; align-items: start; }
+  .dim-name { color: var(--muted); }
+  .dim-score { font-weight: 700; text-align: right; font-family: "SF Mono", Consolas, monospace; }
+  .dim-note { color: #c9d1d9; }
+  .fin { margin-top: 12px; border-top: 1px solid #1c2128; padding-top: 10px; }
+  .fin h4 { font-size: 11px; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
+  .fin table { font-size: 12px; }
+  .fin td { padding: 4px 8px; }
+  @media (max-width: 640px) {
+    .wrap { padding: 16px 10px 48px; }
+    .deep-grid { grid-template-columns: 1fr; }
+    .dim-row { grid-template-columns: 40px 30px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>潜伏下修</h1>
+    <nav class="nav"><a href='index.html' class='nav-link'>总览</a><a href='s_downward_revision.html' class='nav-link active'>潜伏下修</a><a href='s_low_price_ambush.html' class='nav-link'>低价埋伏</a></nav>
+    <div class="updated mono">更新 2026-08-01 18:09</div>
+  </header>
+  <p class="rule" style="margin-top:16px">正股趴底 + 临近到期 + 公司有还债压力 → 赌公司被迫下修转股价</p>
+  <section class="block">
+    <h2>候选池 <span class="count" style="color:var(--muted)">2 只</span></h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th>
+      <th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
+      <tbody><tr><td class='bond'>长汽转债</td><td class='code mono'>113049</td><td class='mono'>110.4</td><td class='mono'>43.3</td><td class='mono'>155.1</td><td>AAA</td><td class='mono'>0.9</td><td class='mono'>35.0</td></tr><tr><td class='bond'>温氏转债</td><td class='code mono'>123107</td><td class='mono'>114.7</td><td class='mono'>87.6</td><td class='mono'>31.0</td><td>AAA</td><td class='mono'>0.7</td><td class='mono'>77.1</td></tr></tbody>
+    </table></div>
+  </section>
+  <section class="block">
+    <h2>深度分析</h2>
+    <div class="deep-grid">
+<article class="card deep-card">
+  <div class="card-head">
+    <span class="bond-name">温氏转债</span>
+    <span class="code mono">123107</span>
+    <span class="verdict" style="background:#f78166">观</span>
+  </div>
+  <div class="meta mono">
+    <span>114.699</span><span>转股价值 87.57</span>
+    <span>溢价 30.98%</span><span>AAA</span>
+    <span>剩 0.66 年</span><span>77.063 亿</span>
+    <span>到期 -8.85%</span>
+  </div>
+  <div class="reason">动机+2 空间+1 但保底 2 → 等价格回落</div>
+  <div class="dims"><div class='dim-row'><span class='dim-name'>动机</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>净利52.66亿 < 转债余额77.063亿, 有压力; 剩0.7年, 紧迫</span></div><div class='dim-row'><span class='dim-name'>保底</span><span class='dim-score' style='color:#f85149'>-2</span><span class='dim-note'>到期收益 -8.8%, 无债底, 纯赌下修</span></div><div class='dim-row'><span class='dim-name'>空间</span><span class='dim-score' style='color:#3fb950'>+1</span><span class='dim-note'>PB 2.32, 有下修空间</span></div></div>
+  <div class='fin'><h4>正股近3年</h4><table><thead><tr><th>年</th><th>营收亿</th><th>净利亿</th><th>每股净资产</th><th>ROE%</th></tr></thead><tbody><tr><td>2023</td><td class='mono'>899.21</td><td class='mono'>-63.9</td><td class='mono'>5.0</td><td class='mono'>-17.6</td></tr><tr><td>2024</td><td class='mono'>1056.45</td><td class='mono'>92.8</td><td class='mono'>6.19</td><td class='mono'>24.59</td></tr><tr><td>2025</td><td class='mono'>1038.62</td><td class='mono'>52.66</td><td class='mono'>6.2</td><td class='mono'>12.57</td></tr></tbody></table></div>
+</article>
+<article class="card deep-card">
+  <div class="card-head">
+    <span class="bond-name">长汽转债</span>
+    <span class="code mono">113049</span>
+    <span class="verdict" style="background:#f85149">不投</span>
+  </div>
+  <div class="meta mono">
+    <span>110.439</span><span>转股价值 43.29</span>
+    <span>溢价 155.11%</span><span>AAA</span>
+    <span>剩 0.86 年</span><span>34.95 亿</span>
+    <span>到期 -3.63%</span>
+  </div>
+  <div class="reason">动机 1 空间2 保底 1 → 条件不满足</div>
+  <div class="dims"><div class='dim-row'><span class='dim-name'>动机</span><span class='dim-score' style='color:#f85149'>-1</span><span class='dim-note'>净利98.65亿 >> 转债余额34.95亿, 不缺钱, 动机弱; 剩0.9年, 紧迫</span></div><div class='dim-row'><span class='dim-name'>保底</span><span class='dim-score' style='color:#f85149'>-1</span><span class='dim-note'>到期收益 -3.6%, 债底偏薄</span></div><div class='dim-row'><span class='dim-name'>空间</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>PB 1.62, 有下修空间, 转股价值43极深跌</span></div></div>
+  <div class='fin'><h4>正股近3年</h4><table><thead><tr><th>年</th><th>营收亿</th><th>净利亿</th><th>每股净资产</th><th>ROE%</th></tr></thead><tbody><tr><td>2023</td><td class='mono'>1732.12</td><td class='mono'>70.22</td><td class='mono'>8.02</td><td class='mono'>10.61</td></tr><tr><td>2024</td><td class='mono'>2021.94</td><td class='mono'>126.6</td><td class='mono'>9.19</td><td class='mono'>17.2</td></tr><tr><td>2025</td><td class='mono'>2228.24</td><td class='mono'>98.65</td><td class='mono'>10.23</td><td class='mono'>11.76</td></tr></tbody></table></div>
+</article></div>
+  </section>
+</div>
+</body>
+</html>
