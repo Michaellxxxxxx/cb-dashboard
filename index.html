@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可转债监控 · 2026-08-01</title>
+<script src="echarts.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --line: #21262d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #f78166;
+    --green: #3fb950; --red: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  .mono { font-family: "SF Mono", Consolas, "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 24px 16px 64px; }
+  header.top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    padding: 8px 0 20px; border-bottom: 1px solid var(--line); }
+  header.top h1 { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
+  header.top .updated { color: var(--muted); font-size: 13px; margin-left: auto; }
+  .strat-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px; margin: 20px 0; }
+  .strat-item { background: var(--panel); border: 1px solid var(--line);
+    border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+  .strat-item.accent { border-color: var(--accent); }
+  .strat-tag { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+  .strat-val { font-size: 22px; font-weight: 700; }
+  .strat-desc { font-size: 12px; color: var(--muted); }
+  .block { margin-top: 28px; }
+  .block h2 { font-size: 16px; font-weight: 650; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px; }
+  .block h2 .count { font-size: 12px; color: var(--muted); font-weight: 400;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 1px 10px; }
+  .rule { color: var(--muted); font-size: 12px; margin: -4px 0 12px; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 11px; color: var(--muted); font-weight: 500;
+    padding: 8px 12px; border-bottom: 1px solid var(--line); background: #10151c; }
+  td { padding: 8px 12px; border-bottom: 1px solid #1c2128; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.bond { font-weight: 550; }
+  td.status { color: var(--accent); }
+  td.code { color: var(--muted); font-size: 12px; }
+  .empty { color: var(--muted); text-align: center; padding: 24px; font-size: 13px; }
+  .deep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .bond-name { font-size: 16px; font-weight: 700; }
+  .code { color: var(--muted); font-size: 12px; }
+  .verdict { margin-left: auto; font-size: 12px; font-weight: 700; color: #fff;
+    border-radius: 6px; padding: 3px 10px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--muted);
+    font-size: 12px; padding-bottom: 10px; border-bottom: 1px solid #1c2128; margin-bottom: 10px; }
+  .reason { font-size: 13px; margin-bottom: 12px; }
+  .dims { display: flex; flex-direction: column; gap: 6px; }
+  .dim-row { display: grid; grid-template-columns: 44px 32px 1fr; gap: 8px; font-size: 12px; align-items: start; }
+  .dim-name { color: var(--muted); }
+  .dim-score { font-weight: 700; text-align: right; font-family: "SF Mono", Consolas, monospace; }
+  .dim-note { color: #c9d1d9; }
+  .fin { margin-top: 12px; border-top: 1px solid #1c2128; padding-top: 10px; }
+  .fin h4 { font-size: 11px; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
+  .fin table { font-size: 12px; }
+  .fin td { padding: 4px 8px; }
+  .chart { height: 320px; border: 1px solid var(--line); border-radius: 8px; }
+  @media (max-width: 640px) {
+    .wrap { padding: 16px 10px 48px; }
+    .strat-bar { grid-template-columns: 1fr 1fr; }
+    .deep-grid { grid-template-columns: 1fr; }
+    .dim-row { grid-template-columns: 40px 30px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>可转债监控</h1>
+    <div class="stats mono"><span class='stat mono'>302 只有成交</span><span class='stat mono'>319 只强赎表</span><span class='stat mono'>316 只全量</span><span class='stat mono'>55 预警</span></div>
+    <div class="updated">更新 2026-08-01 17:17</div>
+  </header>
+  
+<div class="strat-bar">
+  <div class="strat-item"><span class="strat-tag">A 条款</span><span class="strat-val mono">7万</span><span class="strat-desc">潜伏下修, 候选池等建仓</span></div>
+  <div class="strat-item"><span class="strat-tag">B 事件</span><span class="strat-val mono">2万</span><span class="strat-desc">强赎/异动日出手, 不过夜</span></div>
+  <div class="strat-item"><span class="strat-tag">C 现金</span><span class="strat-val mono">1万</span><span class="strat-desc">错杀补仓, 备而不用</span></div>
+  <div class="strat-item accent"><span class="strat-tag">当前动作</span><span class="strat-val">等</span><span class="strat-desc">候选池 ≥3 只再建仓, 跌破110分批</span></div>
+</div>
+  
+<section class="block">
+  <h2>深度分析 <span class="count">2</span></h2>
+  <p class="rule">四维判定: 动机(公司想不想修) + 保底(不修最差亏) + 空间(能不能修). 投=三条件AND</p>
+  <div class="deep-grid">
+<article class="card deep-card" data-verdict="观察">
+  <div class="card-head">
+    <span class="bond-name">温氏转债</span>
+    <span class="code mono">123107</span>
+    <span class="verdict" style="background:#f78166">观</span>
+  </div>
+  <div class="meta mono">
+    <span>114.699</span><span>转股价值 87.57</span>
+    <span>溢价 30.98%</span><span>AAA</span>
+    <span>剩 0.66 年</span><span>77.063 亿</span>
+    <span>到期 -8.85%</span>
+  </div>
+  <div class="reason">动机+2 空间+1 但保底 2 → 等价格回落</div>
+  <div class="dims"><div class='dim-row'><span class='dim-name'>动机</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>净利52.66亿 < 转债余额77.063亿, 有压力; 剩0.7年, 紧迫</span></div><div class='dim-row'><span class='dim-name'>保底</span><span class='dim-score' style='color:#f85149'>-2</span><span class='dim-note'>到期收益 -8.8%, 无债底, 纯赌下修</span></div><div class='dim-row'><span class='dim-name'>空间</span><span class='dim-score' style='color:#3fb950'>+1</span><span class='dim-note'>PB 2.32, 有下修空间</span></div></div>
+  <div class='fin'><h4>正股近3年</h4><table><thead><tr><th>年</th><th>营收亿</th><th>净利亿</th><th>每股净资产</th><th>ROE%</th></tr></thead><tbody><tr><td>2023</td><td class='mono'>899.21</td><td class='mono'>-63.9</td><td class='mono'>5.0</td><td class='mono'>-17.6</td></tr><tr><td>2024</td><td class='mono'>1056.45</td><td class='mono'>92.8</td><td class='mono'>6.19</td><td class='mono'>24.59</td></tr><tr><td>2025</td><td class='mono'>1038.62</td><td class='mono'>52.66</td><td class='mono'>6.2</td><td class='mono'>12.57</td></tr></tbody></table></div>
+</article>
+<article class="card deep-card" data-verdict="不投">
+  <div class="card-head">
+    <span class="bond-name">长汽转债</span>
+    <span class="code mono">113049</span>
+    <span class="verdict" style="background:#f85149">不投</span>
+  </div>
+  <div class="meta mono">
+    <span>110.439</span><span>转股价值 43.29</span>
+    <span>溢价 155.11%</span><span>AAA</span>
+    <span>剩 0.86 年</span><span>34.95 亿</span>
+    <span>到期 -3.63%</span>
+  </div>
+  <div class="reason">动机 1 空间2 保底 1 → 条件不满足</div>
+  <div class="dims"><div class='dim-row'><span class='dim-name'>动机</span><span class='dim-score' style='color:#f85149'>-1</span><span class='dim-note'>净利98.65亿 >> 转债余额34.95亿, 不缺钱, 动机弱; 剩0.9年, 紧迫</span></div><div class='dim-row'><span class='dim-name'>保底</span><span class='dim-score' style='color:#f85149'>-1</span><span class='dim-note'>到期收益 -3.6%, 债底偏薄</span></div><div class='dim-row'><span class='dim-name'>空间</span><span class='dim-score' style='color:#3fb950'>+2</span><span class='dim-note'>PB 1.62, 有下修空间, 转股价值43极深跌</span></div></div>
+  <div class='fin'><h4>正股近3年</h4><table><thead><tr><th>年</th><th>营收亿</th><th>净利亿</th><th>每股净资产</th><th>ROE%</th></tr></thead><tbody><tr><td>2023</td><td class='mono'>1732.12</td><td class='mono'>70.22</td><td class='mono'>8.02</td><td class='mono'>10.61</td></tr><tr><td>2024</td><td class='mono'>2021.94</td><td class='mono'>126.6</td><td class='mono'>9.19</td><td class='mono'>17.2</td></tr><tr><td>2025</td><td class='mono'>2228.24</td><td class='mono'>98.65</td><td class='mono'>10.23</td><td class='mono'>11.76</td></tr></tbody></table></div>
+</article></div>
+</section>
+  
+<section class="block">
+  <h2>A仓潜伏下修候选池 <span class="count">2</span></h2>
+  <p class="rule">转股价值 ≤ 90 + 剩年 ≤ 3 + 价 ≤ 115 + 排雷通过. 候选稀缺=市场常态, 宁可轻仓等</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th>
+    <th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
+    <tbody><tr><td class='bond'>长汽转债</td><td class='code mono'>113049</td><td class='mono'>110.4</td><td class='mono'>43.3</td><td class='mono'>155.1</td><td>AAA</td><td class='mono'>0.9</td><td class='mono'>35.0</td></tr><tr><td class='bond'>温氏转债</td><td class='code mono'>123107</td><td class='mono'>114.7</td><td class='mono'>87.6</td><td class='mono'>31.0</td><td>AAA</td><td class='mono'>0.7</td><td class='mono'>77.1</td></tr></tbody>
+  </table></div>
+</section>
+  
+<section class="block">
+  <h2>双低候选池 TOP20 <span class="count">20</span></h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>名称</th><th>现价</th><th>双低</th><th>溢价%</th>
+    <th>评级</th><th>剩年</th><th>规模亿</th></tr></thead>
+    <tbody><tr><td class='bond'>江农转债</td><td class='mono'>100.0</td><td class='mono'>97.6</td><td class='mono'>-2.4</td><td>AA+</td><td class='mono'>6.0</td><td class='mono'>11.8</td></tr><tr><td class='bond'>三鑫转债</td><td class='mono'>100.0</td><td class='mono'>99.8</td><td class='mono'>-0.2</td><td>AA-</td><td class='mono'>6.0</td><td class='mono'>5.3</td></tr><tr><td class='bond'>特宝转债</td><td class='mono'>100.0</td><td class='mono'>100.4</td><td class='mono'>0.4</td><td>AA+</td><td class='mono'>6.0</td><td class='mono'>15.3</td></tr><tr><td class='bond'>申能转债</td><td class='mono'>100.0</td><td class='mono'>102.2</td><td class='mono'>2.2</td><td>AAA</td><td class='mono'>6.0</td><td class='mono'>20.0</td></tr><tr><td class='bond'>合金转债</td><td class='mono'>100.0</td><td class='mono'>106.8</td><td class='mono'>6.8</td><td>AA-</td><td class='mono'>6.0</td><td class='mono'>5.5</td></tr><tr><td class='bond'>玉禾转债</td><td class='mono'>100.0</td><td class='mono'>107.1</td><td class='mono'>7.1</td><td>AA</td><td class='mono'>6.0</td><td class='mono'>15.0</td></tr><tr><td class='bond'>密卫转债</td><td class='mono'>108.0</td><td class='mono'>109.0</td><td class='mono'>0.9</td><td>AA-</td><td class='mono'>—</td><td class='mono'>4.1</td></tr><tr><td class='bond'>炬申转债</td><td class='mono'>100.0</td><td class='mono'>111.5</td><td class='mono'>11.5</td><td>AA-</td><td class='mono'>6.0</td><td class='mono'>3.8</td></tr><tr><td class='bond'>天脉转债</td><td class='mono'>100.0</td><td class='mono'>118.8</td><td class='mono'>18.8</td><td>AA</td><td class='mono'>6.0</td><td class='mono'>7.9</td></tr><tr><td class='bond'>赛斯转债</td><td class='mono'>100.0</td><td class='mono'>122.2</td><td class='mono'>22.2</td><td>AA</td><td class='mono'>6.0</td><td class='mono'>5.5</td></tr><tr><td class='bond'>上银转债</td><td class='mono'>119.1</td><td class='mono'>124.2</td><td class='mono'>5.2</td><td>AAA</td><td class='mono'>0.5</td><td class='mono'>199.8</td></tr><tr><td class='bond'>大参转债</td><td class='mono'>119.4</td><td class='mono'>126.3</td><td class='mono'>6.8</td><td>AA</td><td class='mono'>0.2</td><td class='mono'>14.0</td></tr><tr><td class='bond'>齐翔转2</td><td class='mono'>110.1</td><td class='mono'>127.0</td><td class='mono'>16.9</td><td>AA</td><td class='mono'>0.1</td><td class='mono'>6.8</td></tr><tr><td class='bond'>鸿路转债</td><td class='mono'>123.0</td><td class='mono'>128.4</td><td class='mono'>5.4</td><td>AA</td><td class='mono'>0.2</td><td class='mono'>15.7</td></tr><tr><td class='bond'>振26转债</td><td class='mono'>100.0</td><td class='mono'>129.5</td><td class='mono'>29.5</td><td>AA</td><td class='mono'>6.0</td><td class='mono'>8.8</td></tr><tr><td class='bond'>曙26转债</td><td class='mono'>100.0</td><td class='mono'>130.5</td><td class='mono'>30.5</td><td>AAA</td><td class='mono'>6.0</td><td class='mono'>80.0</td></tr><tr><td class='bond'>南航转债</td><td class='mono'>107.6</td><td class='mono'>134.1</td><td class='mono'>26.5</td><td>AAA</td><td class='mono'>0.2</td><td class='mono'>59.0</td></tr><tr><td class='bond'>新乳转债</td><td class='mono'>121.4</td><td class='mono'>137.8</td><td class='mono'>16.4</td><td>AA</td><td class='mono'>0.4</td><td class='mono'>7.2</td></tr><tr><td class='bond'>宝莱转债</td><td class='mono'>122.4</td><td class='mono'>138.7</td><td class='mono'>16.3</td><td>AA-</td><td class='mono'>0.1</td><td class='mono'>2.2</td></tr><tr><td class='bond'>青农转债</td><td class='mono'>107.9</td><td class='mono'>140.0</td><td class='mono'>32.1</td><td>AAA</td><td class='mono'>0.1</td><td class='mono'>50.0</td></tr></tbody>
+  </table></div>
+</section>
+  
+<section class="block">
+  <h2>双低散点</h2>
+  <div id="scatter" class="chart"></div>
+  <script>
+  const scatterData = [[100.0, -2.4, 11.8, "江农转债"], [100.0, -0.2, 5.3, "三鑫转债"], [100.0, 0.4, 15.3, "特宝转债"], [100.0, 2.2, 20.0, "申能转债"], [100.0, 6.8, 5.5, "合金转债"], [100.0, 7.1, 15.0, "玉禾转债"], [108.0, 0.9, 4.1, "密卫转债"], [100.0, 11.5, 3.8, "炬申转债"], [100.0, 18.8, 7.9, "天脉转债"], [100.0, 22.2, 5.5, "赛斯转债"], [119.1, 5.2, 199.8, "上银转债"], [119.4, 6.8, 14.0, "大参转债"], [110.1, 16.9, 6.8, "齐翔转2"], [123.0, 5.4, 15.7, "鸿路转债"], [100.0, 29.5, 8.8, "振26转债"], [100.0, 30.5, 80.0, "曙26转债"], [107.6, 26.5, 59.0, "南航转债"], [121.4, 16.4, 7.2, "新乳转债"], [122.4, 16.3, 2.2, "宝莱转债"], [107.9, 32.1, 50.0, "青农转债"]];
+  if (document.getElementById('scatter') && window.echarts) {
+    const ch = echarts.init(document.getElementById('scatter'));
+    ch.setOption({
+      backgroundColor: 'transparent',
+      grid: {left: 60, right: 20, top: 30, bottom: 40},
+      tooltip: {trigger: 'item', formatter: p => p.data[3] + '<br>价 ' + p.data[0] + ' 溢价 ' + p.data[1] + '% 规模 ' + p.data[2] + '亿'},
+      xAxis: {name: '现价', type: 'value', axisLine: {lineStyle: {color: '#666'}}, axisLabel: {color: '#888'}},
+      yAxis: {name: '溢价%', type: 'value', axisLine: {lineStyle: {color: '#666'}}, axisLabel: {color: '#888'}},
+      series: [{type: 'scatter', symbolSize: v => Math.max(8, Math.min(30, v[2] / 3)),
+        itemStyle: {color: '#f78166', opacity: 0.75},
+        data: scatterData}]
+    });
+  }
+  </script>
+</section>
+  
+<section class="block">
+  <h2>强赎/到期预警 <span class="count">15</span></h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>名称</th><th>现价</th><th>状态</th><th>最后交易日</th></tr></thead>
+    <tbody><tr><td class='bond'>密卫转债</td><td class='mono'>108.0</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-06</td></tr><tr><td class='bond'>正帆转债</td><td class='mono'>140.0</td><td class='status'>公告要强赎</td><td class='mono'>—</td></tr><tr><td class='bond'>齐翔转2</td><td class='mono'>110.1</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-14</td></tr><tr><td class='bond'>文科转债</td><td class='mono'>114.9</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-14</td></tr><tr><td class='bond'>嘉泽转债</td><td class='mono'>163.5</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-18</td></tr><tr><td class='bond'>汇车退债</td><td class='mono'>33.4</td><td class='status'>已公告强赎</td><td class='mono'>2026-07-31</td></tr><tr><td class='bond'>青农转债</td><td class='mono'>107.9</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-19</td></tr><tr><td class='bond'>万孚转债</td><td class='mono'>110.1</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-26</td></tr><tr><td class='bond'>宝莱转债</td><td class='mono'>122.4</td><td class='status'>已公告强赎</td><td class='mono'>2026-08-31</td></tr><tr><td class='bond'>超达转债</td><td class='mono'>173.8</td><td class='status'>公告不强赎</td><td class='mono'>—</td></tr><tr><td class='bond'>晶科转债</td><td class='mono'>122.3</td><td class='status'>公告不强赎</td><td class='mono'>—</td></tr><tr><td class='bond'>电化转债</td><td class='mono'>174.6</td><td class='status'>公告不强赎</td><td class='mono'>—</td></tr><tr><td class='bond'>欧通转债</td><td class='mono'>854.0</td><td class='status'>公告不强赎</td><td class='mono'>—</td></tr><tr><td class='bond'>帝欧转债</td><td class='mono'>140.8</td><td class='status'>公告不强赎</td><td class='mono'>—</td></tr><tr><td class='bond'>煜邦转债</td><td class='mono'>137.0</td><td class='status'>公告不强赎</td><td class='mono'>—</td></tr></tbody>
+  </table></div>
+</section>
+  
+<section class="block">
+  <h2>今日异动 <span class="count">10</span></h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>名称</th><th>现价</th><th>涨跌%</th></tr></thead>
+    <tbody><tr><td class='bond'>泰坦转债</td><td class='mono'>488.0</td><td class='mono' style='color:#3fb950'>+9.54%</td></tr><tr><td class='bond'>中汽转债</td><td class='mono'>180.5</td><td class='mono' style='color:#3fb950'>+8.73%</td></tr><tr><td class='bond'>福新转债</td><td class='mono'>329.3</td><td class='mono' style='color:#3fb950'>+8.51%</td></tr><tr><td class='bond'>惠城转债</td><td class='mono'>1040.5</td><td class='mono' style='color:#3fb950'>+7.84%</td></tr><tr><td class='bond'>奥飞转债</td><td class='mono'>315.6</td><td class='mono' style='color:#3fb950'>+7.78%</td></tr><tr><td class='bond'>冠中转债</td><td class='mono'>201.6</td><td class='mono' style='color:#3fb950'>+7.72%</td></tr><tr><td class='bond'>联瑞转债</td><td class='mono'>307.1</td><td class='mono' style='color:#3fb950'>+7.59%</td></tr><tr><td class='bond'>岱美转债</td><td class='mono'>197.7</td><td class='mono' style='color:#3fb950'>+6.77%</td></tr><tr><td class='bond'>声迅转债</td><td class='mono'>248.3</td><td class='mono' style='color:#3fb950'>+6.14%</td></tr><tr><td class='bond'>N科博转</td><td class='mono'>157.3</td><td class='mono' style='color:#3fb950'>+57.30%</td></tr></tbody>
+  </table></div>
+</section>
+  <footer style="margin-top:40px;color:var(--muted);font-size:11px;border-top:1px solid var(--line);padding-top:12px">
+    静态快照非实时 · 新浪行情 + 集思录条款 · JISILU_COOKIE 每 7 天刷新 · 规则: 投=动机>0 AND 空间>0 AND 保底≥-1
+  </footer>
+</div>
+</body>
+</html>
