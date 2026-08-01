@@ -185,14 +185,14 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link active' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:34</span>
+    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:39</span>
   </div>
 </nav>
 <div class="wrap">
   
 <div class="statusbar">
-  <span>更新 <b>2026-08-01 19:34</b></span>
-  <span>行情 <b>302</b> 只</span>
+  <span>更新 <b>2026-08-01 19:39</b></span>
+  <span>行情 <b>300</b> 只</span>
   <span>全量池 <b>316</b> 只</span>
   <span>强赎预警 <b>55</b> / 319</span>
   <span class="dot">·</span>
@@ -280,12 +280,12 @@
 <script>
 (function() {
   if (typeof echarts === 'undefined') return;
-  var specs = [{id:'radar_123107_0',name:'温氏转债',value:[100.0,0.0,75.0],raw:[2,-2,1],color:'#f78166',indicators:[{name:'动机',max:2,min:-2},{name:'保底',max:2,min:-2},{name:'空间',max:2,min:-2}]},
-{id:'radar_113049_1',name:'长汽转债',value:[25.0,25.0,100.0],raw:[-1,-1,2],color:'#f85149',indicators:[{name:'动机',max:2,min:-2},{name:'保底',max:2,min:-2},{name:'空间',max:2,min:-2}]},
-{id:'radar_110102_2',name:'江农转债',value:[100.0,100.0,100.0],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
-{id:'radar_123280_3',name:'三鑫转债',value:[100.0,100.0,100.0],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
-{id:'radar_110102_4',name:'江农转债',value:[75.0,75.0,100.0,100.0],raw:[1,1,2,2],color:'#3fb950',indicators:[{name:'折价',max:2,min:-2},{name:'窗口',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
-{id:'radar_118075_5',name:'奥普转债',value:[100.0,75.0,100.0],raw:[2,1,2],color:'#3fb950',indicators:[{name:'回售压力',max:2,min:-2},{name:'动机',max:2,min:-2},{name:'债底',max:2,min:-2}]}];
+  var specs = [{id:'radar_123107_0',name:'温氏转债',value:[2,-2,1],raw:[2,-2,1],color:'#f78166',indicators:[{name:'动机',max:2,min:-2},{name:'保底',max:2,min:-2},{name:'空间',max:2,min:-2}]},
+{id:'radar_113049_1',name:'长汽转债',value:[-1,-1,2],raw:[-1,-1,2],color:'#f85149',indicators:[{name:'动机',max:2,min:-2},{name:'保底',max:2,min:-2},{name:'空间',max:2,min:-2}]},
+{id:'radar_110102_2',name:'江农转债',value:[2,2,2],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_123280_3',name:'三鑫转债',value:[2,2,2],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_110102_4',name:'江农转债',value:[1,1,2,2],raw:[1,1,2,2],color:'#3fb950',indicators:[{name:'折价',max:2,min:-2},{name:'窗口',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_118075_5',name:'奥普转债',value:[2,1,2],raw:[2,1,2],color:'#3fb950',indicators:[{name:'回售压力',max:2,min:-2},{name:'动机',max:2,min:-2},{name:'债底',max:2,min:-2}]}];
   specs.forEach(function(s) {
     var el = document.getElementById(s.id);
     if (!el) return;
