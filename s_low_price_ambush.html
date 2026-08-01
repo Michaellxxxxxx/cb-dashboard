@@ -153,6 +153,9 @@
   .exit-row:last-child { border-bottom: none; }
   a.jsl { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
   a.jsl:hover { border-bottom-color: var(--accent); }
+  .power { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; margin-left: auto; }
+  .dim-card-head .power { margin-left: auto; }
+  .v-main .power { display: inline-block; margin: 0 0 0 8px; font-size: 12px; }
   .radar-box { width: 100%; height: 150px; margin-top: 10px; }
   .radar-flex { display: flex; gap: 16px; align-items: stretch; }
   .radar-flex .dims { flex: 1; min-width: 0; }
@@ -182,7 +185,7 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link active' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:21</span>
+    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:34</span>
   </div>
 </nav>
 <div class="wrap">
@@ -205,6 +208,7 @@
   <div class="dim-card-head">
     <span class="dname"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></span>
     <span class="code" style="font-size:12px;color:var(--muted);font-family:'Geist Mono',monospace"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></span>
+    <span class='power' style='color:#3fb950'>100%</span>
     <span class='badge invest'>投</span>
   </div>
   <div class="meta">100.0 · 转股价值 102.42 · 溢价 -2.37% · AA+ · 剩 5.956 年 · 11.85 亿 · 到期 2.04%</div>
@@ -223,6 +227,7 @@
   <div class="dim-card-head">
     <span class="dname"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>三鑫转债</a></span>
     <span class="code" style="font-size:12px;color:var(--muted);font-family:'Geist Mono',monospace"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>123280</a></span>
+    <span class='power' style='color:#3fb950'>100%</span>
     <span class='badge invest'>投</span>
   </div>
   <div class="meta">100.0 · 转股价值 100.21 · 溢价 -0.21% · AA- · 剩 6.003 年 · 5.3 亿 · 到期 2.18%</div>
@@ -242,14 +247,24 @@
 <script>
 (function() {
   if (typeof echarts === 'undefined') return;
-  var specs = [{id:'radar_110102_0',name:'radar_110102_0',value:[100,100,100],color:'#3fb950',indicators:[{name:'溢价底',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
-{id:'radar_123280_1',name:'radar_123280_1',value:[100,100,100],color:'#3fb950',indicators:[{name:'溢价底',max:100},{name:'债底',max:100},{name:'质量',max:100}]}];
+  var specs = [{id:'radar_110102_0',name:'江农转债',value:[100.0,100.0,100.0],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_123280_1',name:'三鑫转债',value:[100.0,100.0,100.0],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]}];
   specs.forEach(function(s) {
     var el = document.getElementById(s.id);
     if (!el) return;
     var ch = echarts.init(el);
     ch.setOption({
-      tooltip: {trigger:'item'},
+      tooltip: {
+        trigger: 'item',
+        formatter: function(p) {
+          var rows = s.indicators.map(function(ind, i) {
+            var v = s.raw[i];
+            var col = v > 0 ? '#3fb950' : (v < 0 ? '#f85149' : '#8b8b8b');
+            return ind.name + ' <b style="color:' + col + '">' + (v > 0 ? '+' : '') + v + '</b>';
+          });
+          return '<b>' + s.name + '</b><br/>' + rows.join('<br/>');
+        }
+      },
       radar: {
         indicator: s.indicators,
         radius: '62%',
@@ -257,7 +272,8 @@
         axisName: {color: '#8b8b8b', fontSize: 11},
         splitLine: {lineStyle: {color: '#1f1f1f'}},
         splitArea: {areaStyle: {color: ['transparent','transparent']}},
-        axisLine: {lineStyle: {color: '#1f1f1f'}}
+        axisLine: {lineStyle: {color: '#1f1f1f'}},
+        axisLabel: {show: false}
       },
       series: [{
         type: 'radar',

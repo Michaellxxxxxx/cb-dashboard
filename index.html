@@ -153,6 +153,9 @@
   .exit-row:last-child { border-bottom: none; }
   a.jsl { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
   a.jsl:hover { border-bottom-color: var(--accent); }
+  .power { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; margin-left: auto; }
+  .dim-card-head .power { margin-left: auto; }
+  .v-main .power { display: inline-block; margin: 0 0 0 8px; font-size: 12px; }
   .radar-box { width: 100%; height: 150px; margin-top: 10px; }
   .radar-flex { display: flex; gap: 16px; align-items: stretch; }
   .radar-flex .dims { flex: 1; min-width: 0; }
@@ -182,14 +185,14 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link active' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">300 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:21</span>
+    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 19:34</span>
   </div>
 </nav>
 <div class="wrap">
   
 <div class="statusbar">
-  <span>更新 <b>2026-08-01 19:21</b></span>
-  <span>行情 <b>300</b> 只</span>
+  <span>更新 <b>2026-08-01 19:34</b></span>
+  <span>行情 <b>302</b> 只</span>
   <span>全量池 <b>316</b> 只</span>
   <span>强赎预警 <b>55</b> / 319</span>
   <span class="dot">·</span>
@@ -207,6 +210,7 @@
     <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>温氏转债</a></span>
     <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>123107</a></span>
     <span class="v-strat">潜伏下修</span>
+    <span class='power' style='color:#f78166'>38%</span>
     <span class="v-reason">动机+2 空间+1 但保底-2 -> 等价格回落</span>
     <div class="radar-box" id="radar_123107_0"></div>
   </div>
@@ -218,6 +222,7 @@
     <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>长汽转债</a></span>
     <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>113049</a></span>
     <span class="v-strat">潜伏下修</span>
+    <span class='power' style='color:#f85149'>-12%</span>
     <span class="v-reason">动机-1 空间2 保底-1 -> 条件不满足</span>
     <div class="radar-box" id="radar_113049_1"></div>
   </div>
@@ -229,6 +234,7 @@
     <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></span>
     <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></span>
     <span class="v-strat">低价埋伏</span>
+    <span class='power' style='color:#3fb950'>100%</span>
     <span class="v-reason">溢价+2 债底+2 质量+2 -> 三条件满足</span>
     <div class="radar-box" id="radar_110102_2"></div>
   </div>
@@ -240,6 +246,7 @@
     <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>三鑫转债</a></span>
     <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123280' target='_blank' rel='noopener'>123280</a></span>
     <span class="v-strat">低价埋伏</span>
+    <span class='power' style='color:#3fb950'>100%</span>
     <span class="v-reason">溢价+2 债底+2 质量+2 -> 三条件满足</span>
     <div class="radar-box" id="radar_123280_3"></div>
   </div>
@@ -251,6 +258,7 @@
     <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>江农转债</a></span>
     <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/110102' target='_blank' rel='noopener'>110102</a></span>
     <span class="v-strat">次新债折价收敛</span>
+    <span class='power' style='color:#3fb950'>70%</span>
     <span class="v-reason">折价+1 窗口+1 债底+2 质量+2 -> 四条件满足</span>
     <div class="radar-box" id="radar_110102_4"></div>
   </div>
@@ -262,6 +270,7 @@
     <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>奥普转债</a></span>
     <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/118075' target='_blank' rel='noopener'>118075</a></span>
     <span class="v-strat">回售博弈</span>
+    <span class='power' style='color:#3fb950'>88%</span>
     <span class="v-reason">压力+2 动机+1 债底2 -> 三条件满足</span>
     <div class="radar-box" id="radar_118075_5"></div>
   </div>
@@ -271,18 +280,28 @@
 <script>
 (function() {
   if (typeof echarts === 'undefined') return;
-  var specs = [{id:'radar_123107_0',name:'radar_123107_0',value:[100,0,75],color:'#f78166',indicators:[{name:'动机',max:100},{name:'保底',max:100},{name:'空间',max:100}]},
-{id:'radar_113049_1',name:'radar_113049_1',value:[25,25,100],color:'#f85149',indicators:[{name:'动机',max:100},{name:'保底',max:100},{name:'空间',max:100}]},
-{id:'radar_110102_2',name:'radar_110102_2',value:[100,100,100],color:'#3fb950',indicators:[{name:'溢价底',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
-{id:'radar_123280_3',name:'radar_123280_3',value:[100,100,100],color:'#3fb950',indicators:[{name:'溢价底',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
-{id:'radar_110102_4',name:'radar_110102_4',value:[75,75,100,100],color:'#3fb950',indicators:[{name:'折价',max:100},{name:'窗口',max:100},{name:'债底',max:100},{name:'质量',max:100}]},
-{id:'radar_118075_5',name:'radar_118075_5',value:[100,75,100],color:'#3fb950',indicators:[{name:'回售压力',max:100},{name:'动机',max:100},{name:'债底',max:100}]}];
+  var specs = [{id:'radar_123107_0',name:'温氏转债',value:[100.0,0.0,75.0],raw:[2,-2,1],color:'#f78166',indicators:[{name:'动机',max:2,min:-2},{name:'保底',max:2,min:-2},{name:'空间',max:2,min:-2}]},
+{id:'radar_113049_1',name:'长汽转债',value:[25.0,25.0,100.0],raw:[-1,-1,2],color:'#f85149',indicators:[{name:'动机',max:2,min:-2},{name:'保底',max:2,min:-2},{name:'空间',max:2,min:-2}]},
+{id:'radar_110102_2',name:'江农转债',value:[100.0,100.0,100.0],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_123280_3',name:'三鑫转债',value:[100.0,100.0,100.0],raw:[2,2,2],color:'#3fb950',indicators:[{name:'溢价底',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_110102_4',name:'江农转债',value:[75.0,75.0,100.0,100.0],raw:[1,1,2,2],color:'#3fb950',indicators:[{name:'折价',max:2,min:-2},{name:'窗口',max:2,min:-2},{name:'债底',max:2,min:-2},{name:'质量',max:2,min:-2}]},
+{id:'radar_118075_5',name:'奥普转债',value:[100.0,75.0,100.0],raw:[2,1,2],color:'#3fb950',indicators:[{name:'回售压力',max:2,min:-2},{name:'动机',max:2,min:-2},{name:'债底',max:2,min:-2}]}];
   specs.forEach(function(s) {
     var el = document.getElementById(s.id);
     if (!el) return;
     var ch = echarts.init(el);
     ch.setOption({
-      tooltip: {trigger:'item'},
+      tooltip: {
+        trigger: 'item',
+        formatter: function(p) {
+          var rows = s.indicators.map(function(ind, i) {
+            var v = s.raw[i];
+            var col = v > 0 ? '#3fb950' : (v < 0 ? '#f85149' : '#8b8b8b');
+            return ind.name + ' <b style="color:' + col + '">' + (v > 0 ? '+' : '') + v + '</b>';
+          });
+          return '<b>' + s.name + '</b><br/>' + rows.join('<br/>');
+        }
+      },
       radar: {
         indicator: s.indicators,
         radius: '62%',
@@ -290,7 +309,8 @@
         axisName: {color: '#8b8b8b', fontSize: 11},
         splitLine: {lineStyle: {color: '#1f1f1f'}},
         splitArea: {areaStyle: {color: ['transparent','transparent']}},
-        axisLine: {lineStyle: {color: '#1f1f1f'}}
+        axisLine: {lineStyle: {color: '#1f1f1f'}},
+        axisLabel: {show: false}
       },
       series: [{
         type: 'radar',
