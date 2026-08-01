@@ -151,6 +151,14 @@
   .exit-list { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
   .exit-row { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid #1c1c1c; }
   .exit-row:last-child { border-bottom: none; }
+  .rules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .rule-card { border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; background: var(--panel); }
+  .rule-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .rule-dim { font-weight: 600; font-size: 14px; }
+  .rule-w { font-size: 11px; color: var(--muted); font-family: 'Geist Mono', monospace; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; }
+  .rule-max { margin-left: auto; font-size: 11px; color: var(--accent); font-family: 'Geist Mono', monospace; }
+  .rule-line { font-size: 12px; color: var(--text); line-height: 1.6; }
+  .rule-note { font-size: 11px; color: var(--muted); margin-top: 6px; }
   a.jsl { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
   a.jsl:hover { border-bottom-color: var(--accent); }
   .power { font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; margin-left: auto; }
@@ -185,13 +193,13 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link active' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 22:04</span>
+    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 22:17</span>
   </div>
 </nav>
 <div class="wrap">
   
 <div class="statusbar">
-  <span>更新 <b>2026-08-01 22:04</b></span>
+  <span>更新 <b>2026-08-01 22:17</b></span>
   <span>行情 <b>302</b> 只</span>
   <span>全量池 <b>316</b> 只</span>
   <span>强赎预警 <b>55</b> / 319</span>
