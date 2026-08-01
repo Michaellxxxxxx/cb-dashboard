@@ -147,6 +147,9 @@
   .fin-table td { font-size: 12px; padding: 4px 8px; }
 
   .rule-line { font-size: 12px; color: var(--muted); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line); }
+  .exit-list { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .exit-row { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid #1c1c1c; }
+  .exit-row:last-child { border-bottom: none; }
   footer {
     margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
     color: var(--muted); font-size: 11px; font-family: 'Geist Mono', monospace;
@@ -170,8 +173,8 @@
 <nav class="dock">
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
-    <a class='dock-link' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link active' href='s_low_price_ambush.html'>低价埋伏</a>
-    <span class="dock-meta">306 有成交 · 316 全量 · 55 预警 · 2026-08-01 18:38</span>
+    <a class='dock-link' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link active' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
+    <span class="dock-meta">302 有成交 · 316 全量 · 55 预警 · 2026-08-01 18:47</span>
   </div>
 </nav>
 <div class="wrap">
@@ -221,6 +224,11 @@
 </table>
 </div></div>
   </section>
+  
+<section class="section">
+  <div class="sec-head"><h2>退出纪律</h2><span class="count">5 条</span></div>
+  <div class="exit-list"><div class='exit-row'>[卖] 强赎触发(公告) → 当日/次日卖出, 利好兑现离场</div><div class='exit-row'>[卖] 溢价转正且 >5% → 折价保护消失, 分批止盈</div><div class='exit-row'>[卖] 价格冲高 >125 → 分批止盈, 不贪最后一段</div><div class='exit-row'>[卖] 评级下调 / 正股ST → 无条件清仓</div><div class='exit-row'>[卖] 正股连续2季亏损 → 埋伏逻辑破坏, 撤</div></div>
+</section>
   <footer>
     <span>静态快照, 非实时</span>
     <span>判定规则: 三条件 AND, 任一失败即不投</span>
