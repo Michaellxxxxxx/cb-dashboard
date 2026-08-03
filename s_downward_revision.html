@@ -122,6 +122,36 @@
   .up { color: var(--green); } .down { color: var(--red); }
   .empty { color: var(--muted); text-align: center; padding: 24px !important; }
 
+  /* 横向滚动表格: 右缘渐隐 + 底部滚动条 + 首次提示 (手机端可滑动标识) */
+  .tbl-scroll { position: relative; }
+  .tbl-edge {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 40px;
+    background: linear-gradient(to left, rgba(10,10,10,0.92), rgba(10,10,10,0));
+    border-radius: 0 6px 6px 0;
+    pointer-events: none; opacity: 0; transition: opacity 0.25s ease;
+  }
+  .tbl-scroll.scrollable .tbl-edge { opacity: 1; }
+  .tbl-bar {
+    position: absolute; left: 4px; right: 4px; bottom: 3px; height: 2px;
+    border-radius: 1px; background: rgba(237,237,237,0.10);
+    overflow: hidden; opacity: 0; transition: opacity 0.25s ease;
+  }
+  .tbl-scroll.scrollable .tbl-bar { opacity: 1; }
+  .tbl-bar-thumb {
+    position: absolute; top: 0; left: 0; height: 100%;
+    border-radius: 1px; background: rgba(237,237,237,0.34);
+    min-width: 24px;
+  }
+  .tbl-hint {
+    position: absolute; top: 50%; right: 8px; transform: translateY(-50%);
+    font-size: 11px; letter-spacing: 0.04em; color: var(--muted);
+    background: rgba(10,10,10,0.78); border: 1px solid #262626;
+    border-radius: 4px; padding: 3px 8px; pointer-events: none;
+    font-family: 'Geist Mono', monospace; white-space: nowrap;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .tbl-hint.show { opacity: 1; }
+
   /* 双低散点 */
   .chart { height: 320px; border: 1px solid var(--line); border-radius: 6px; }
 
@@ -193,7 +223,7 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link' href='index.html'>总览</a><a class='dock-link active' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">306 有成交 · 30 全量 · 54 预警 · 2026-08-04 02:14</span>
+    <span class="dock-meta">302 有成交 · 30 全量 · 54 预警 · 2026-08-04 02:16</span>
   </div>
 </nav>
 <div class="wrap">
@@ -204,10 +234,15 @@
   <section class="section">
     <div class="sec-head"><h2>候选池</h2><span class="count">0 只</span></div>
     
-<div class="table-wrap"><table>
-  <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th><th>回售起始</th><th>下修触发</th></tr></thead>
-  <tbody><tr><td colspan="99" class="empty">无数据</td></tr></tbody>
-</table></div>
+<div class="tbl-scroll">
+  <div class="table-wrap"><table>
+    <thead><tr><th>名称</th><th>代码</th><th>现价</th><th>转股价值</th><th>溢价%</th><th>评级</th><th>剩年</th><th>规模亿</th><th>回售起始</th><th>下修触发</th></tr></thead>
+    <tbody><tr><td colspan="99" class="empty">无数据</td></tr></tbody>
+  </table></div>
+  <div class="tbl-edge" aria-hidden="true"></div>
+  <div class="tbl-bar" aria-hidden="true"><span class="tbl-bar-thumb"></span></div>
+  <div class="tbl-hint" aria-hidden="true">左右滑动 <b>&rarr;</b></div>
+</div>
   </section>
   <section class="section">
     <div class="sec-head"><h2>深度分析</h2><span class="count">0</span></div>
@@ -232,5 +267,41 @@
     <span>数据: 新浪 + 集思录</span>
   </footer>
 </div>
+
+<script>
+(function () {
+  function setup(el) {
+    var wrap = el.querySelector('.table-wrap');
+    if (!wrap) return;
+    var edge = el.querySelector('.tbl-edge');
+    var thumb = el.querySelector('.tbl-bar-thumb');
+    var hint = el.querySelector('.tbl-hint');
+    var hintDone = false;
+    function sync() {
+      var can = wrap.scrollWidth > wrap.clientWidth + 1;
+      el.classList.toggle('scrollable', can);
+      if (!can) return;
+      var max = wrap.scrollWidth - wrap.clientWidth;
+      var p = wrap.scrollLeft / max;
+      if (edge) edge.style.opacity = p > 0.97 ? '0' : '';
+      if (thumb) {
+        var w = Math.max(24, wrap.clientWidth / wrap.scrollWidth * 100);
+        thumb.style.width = w + '%';
+        thumb.style.transform = 'translateX(' + (p * (100 - w)) + '%)';
+      }
+      if (hint && !hintDone) {
+        hintDone = true;
+        hint.classList.add('show');
+        setTimeout(function () { hint.classList.remove('show'); }, 3500);
+      }
+    }
+    wrap.addEventListener('scroll', sync, {passive: true});
+    window.addEventListener('resize', sync);
+    sync();
+  }
+  document.querySelectorAll('.tbl-scroll').forEach(setup);
+})();
+</script>
+
 </body>
 </html>
