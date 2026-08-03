@@ -117,12 +117,16 @@
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: #131313; }
   td.bond { font-weight: 550; }
-  .tag-new {
-    display: inline-block; margin-left: 6px; padding: 1px 6px; border-radius: 999px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
-    color: #e8e8e8; background: rgba(237,237,237,0.10); border: 1px solid rgba(237,237,237,0.18);
-    vertical-align: 1px;
+  /* 状态角标 (2026-08-04): 次新=中性灰 / 公告下修·触发=琥珀 / 回售·强赎=红 / 否决=暗灰 */
+  .tag-badge {
+    display: inline-block; margin-left: 5px; padding: 1px 6px; border-radius: 999px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.04em; vertical-align: 1px;
+    background: rgba(237,237,237,0.10); border: 1px solid rgba(237,237,237,0.18); color: #e8e8e8;
   }
+  .tag-rev, .tag-rev-trig { color: #d29922; background: rgba(210,153,34,0.10); border-color: rgba(210,153,34,0.30); }
+  .tag-rev-off { color: #8b8b8b; background: rgba(139,139,139,0.08); border-color: rgba(139,139,139,0.22); }
+  .tag-put, .tag-redeem, .tag-redeem-trig { color: #f85149; background: rgba(248,81,73,0.10); border-color: rgba(248,81,73,0.30); }
+  .tag-redeem-off { color: #8b8b8b; background: rgba(139,139,139,0.08); border-color: rgba(139,139,139,0.22); }
   td.code { color: var(--muted); font-size: 12px; }
   .num { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
   .up { color: var(--green); } .down { color: var(--red); }
@@ -229,7 +233,7 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link' href='index.html'>总览</a><a class='dock-link active' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">299 有成交 · 30 全量 · 54 预警 · 2026-08-04 02:35</span>
+    <span class="dock-meta">299 有成交 · 30 全量 · 54 预警 · 2026-08-04 02:57</span>
   </div>
 </nav>
 <div class="wrap">
