@@ -233,13 +233,13 @@
   <div class="dock-inner">
     <span class="dock-logo">CB<span style="color:var(--accent)">·</span>Monitor</span>
     <a class='dock-link active' href='index.html'>总览</a><a class='dock-link' href='s_downward_revision.html'>潜伏下修</a><a class='dock-link' href='s_low_price_ambush.html'>低价埋伏</a><a class='dock-link' href='s_new_issue_discount.html'>次新债折价收敛</a><a class='dock-link' href='s_put_option.html'>回售博弈</a>
-    <span class="dock-meta">302 有成交 · 303 全量 · 55 预警 · 2026-08-04 20:17</span>
+    <span class="dock-meta">302 有成交 · 303 全量 · 55 预警 · 2026-08-04 20:20</span>
   </div>
 </nav>
 <div class="wrap">
   
 <div class="statusbar">
-  <span>更新 <b>2026-08-04 20:17</b></span>
+  <span>更新 <b>2026-08-04 20:20</b></span>
   <span>行情 <b>302</b> 只</span>
   <span>全量池 <b>303</b> 只</span>
   <span>强赎预警 <b>55</b> / 321</span>
@@ -250,8 +250,90 @@
 </div>
   
 <section class="section">
-  <div class="sec-head"><h2>今日判定</h2><span class="count">0</span></div>
-  <div class="verdict-list"><div class="empty" style="padding:24px;color:var(--muted)">今日无深度判定, 候选池为空</div></div>
+  <div class="sec-head"><h2>今日判定</h2><span class="count">3</span></div>
+  <div class="verdict-list">
+<div class="verdict-row">
+  <span class='badge watch'>观察</span>
+  <div class="v-main">
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>温氏转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/123107' target='_blank' rel='noopener'>123107</a></span>
+    <span class="v-strat">潜伏下修</span>
+    <span class='power' style='color:#f78166'>+3.8/10</span>
+    <span class="v-reason">动机+2 空间+1 但保底-2 -> 等价格回落</span>
+    <div class="radar-box" id="radar_123107_0"></div>
+  </div>
+  <span class="v-meta">113.0 · 溢价 34.9% · AAA · 剩 0.6 年</span>
+</div>
+<div class="verdict-row">
+  <span class='badge skip'>不投</span>
+  <div class="v-main">
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>长汽转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>113049</a></span>
+    <span class="v-strat">潜伏下修</span>
+    <span class='power' style='color:#f85149'>0/10</span>
+    <span class="v-reason">动机-1 空间2 保底0 -> 条件不满足</span>
+    <div class="radar-box" id="radar_113049_1"></div>
+  </div>
+  <span class="v-meta">109.2 · 溢价 163.9% · AAA · 剩 0.8 年</span>
+</div>
+<div class="verdict-row">
+  <span class='badge skip'>不投</span>
+  <div class="v-main">
+    <span class="v-name"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>长汽转债</a></span>
+    <span class="v-code"><a class='jsl' href='https://www.jisilu.cn/data/convert_bond_detail/113049' target='_blank' rel='noopener'>113049</a></span>
+    <span class="v-strat">回售博弈</span>
+    <span class='power' style='color:#f85149'>+5.0/10</span>
+    <span class="v-reason">压力2 动机-1 债底1 -> 条件不满足</span>
+    <div class="radar-box" id="radar_113049_2"></div>
+  </div>
+  <span class="v-meta">109.2 · 溢价 163.9% · AAA · 剩 0.8 年</span>
+</div></div>
+  
+<script>
+(function() {
+  if (typeof echarts === 'undefined') return;
+  var specs = [{id:'radar_123107_0',name:'温氏转债',value:[10,-10,5],raw:[10,-10,5],color:'#f78166',indicators:[{name:'动机',max:10,min:-10},{name:'保底',max:10,min:-10},{name:'空间',max:10,min:-10}]},
+{id:'radar_113049_1',name:'长汽转债',value:[-5,0,10],raw:[-5,0,10],color:'#f85149',indicators:[{name:'动机',max:10,min:-10},{name:'保底',max:10,min:-10},{name:'空间',max:10,min:-10}]},
+{id:'radar_113049_2',name:'长汽转债',value:[10,-5,5],raw:[10,-5,5],color:'#f85149',indicators:[{name:'回售压力',max:10,min:-10},{name:'动机',max:10,min:-10},{name:'债底',max:10,min:-10}]}];
+  specs.forEach(function(s) {
+    var el = document.getElementById(s.id);
+    if (!el) return;
+    var ch = echarts.init(el);
+    ch.setOption({
+      tooltip: {
+        trigger: 'item',
+        formatter: function(p) {
+          var rows = s.indicators.map(function(ind, i) {
+            var v = s.raw[i];
+            var col = v > 0 ? '#3fb950' : (v < 0 ? '#f85149' : '#8b8b8b');
+            return ind.name + ' <b style="color:' + col + '">' + (v > 0 ? '+' : '') + v + '</b>';
+          });
+          return '<b>' + s.name + '</b><br/>' + rows.join('<br/>');
+        }
+      },
+      radar: {
+        indicator: s.indicators,
+        radius: '62%',
+        splitNumber: 4,
+        axisName: {color: '#8b8b8b', fontSize: 11},
+        splitLine: {lineStyle: {color: '#1f1f1f'}},
+        splitArea: {areaStyle: {color: ['transparent','transparent']}},
+        axisLine: {lineStyle: {color: '#1f1f1f'}},
+        axisLabel: {show: false}
+      },
+      series: [{
+        type: 'radar',
+        symbolSize: 3,
+        data: [{value: s.value, name: s.name,
+          lineStyle: {color: s.color, width: 1.5},
+          itemStyle: {color: s.color},
+          areaStyle: {color: s.color, opacity: 0.12}}]
+      }]
+    });
+    window.addEventListener('resize', function() { ch.resize(); });
+  });
+})();
+</script>
 </section>
   
 <section class="section">
